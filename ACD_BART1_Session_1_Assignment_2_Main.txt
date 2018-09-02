@@ -1,0 +1,182 @@
+﻿Session 1 – Introduction to Working with R
+
+
+Assignment - 2
+
+
+Contents
+
+
+1. Introduction	2
+
+2. Objective	2
+
+3. Prerequisites	2
+
+4. Associated Data Files	2
+
+5. Problem Statement	2
+
+6. Expected Output	2
+
+
+
+
+Introduction
+
+This assignment will help you to understand the key concepts learnt in this session.
+
+Objective
+
+This assignment will test your skills on the basics of R.
+
+Prerequisites
+
+Not Applicable
+
+Associated Data Files
+
+Not Applicable
+
+Problem Statement
+
+1. What should be the output of the following Script?
+
+v <- c( 2,5.5,6) t <- c(8, 3, 4) print(v%/%t)
+Answer: 
+> v<-c(2,5.5,6)
+> v
+[1] 2.0 5.5 6.0
+> t<-c(8,3,4)
+> t
+[1] 8 3 4
+
+> print(v%/%t)
+[1] 0 1 1
+
+
+
+
+2. You have 25 excel files with names as xx_1.xlsx, xx_2.xlsx,……..xx_25.xlsx in a dir.
+
+Write a program to extract the contents of each excel sheet and make it one df.
+Answer: 
+install.packages("xlsx")
+library(xlsx)
+> xlsx.writeMultipleData <- function (xx_1.xlsx, xx_2.xlsx, xx_3.xlsx,....xx_25.xlsx)
++ {
++   require(xlsx, quietly = TRUE)
++   objects <- list(...)
++   fargs <- as.list(match.call(expand.dots = TRUE))
++   objnames <- as.character(fargs)[-c(1, 2)]
++   nobjects <- length(objects)
++   for (i in 1:nobjects) {
++     if (i == 1)
++       write.xlsx(objects[[i]], file, sheetName = objnames[i])
++     else write.xlsx(objects[[i]], file, sheetName = objnames[i],
++                     append = TRUE)
++   }
++ }
+
+> 
+
+
+
+3. If the above 25 files were csv files, what would be your script to read?
+Answer: 
+> path <- " C:/Users/Manish Chugh/Desktop/New folder"
+
+
+
+> files <- c(paste("0",1:9,".csv",sep=""),
++            paste(10:19,".csv",sep=""), 
++            paste(19:25,".csv",sep="")
++ )
+# read 1st data file
+> data <- read.csv(paste(path,"01.csv",sep="/"))
+
+#read remaining file and rbind them to dataset
+>for (f in files) {
++ data <- rbind(data,read.csv(paste(path, files, sep="/")))
++ }
+OR
+
+> file_names  <- dir("C:/Users/Manish Chugh/Desktop/New folder")
+> your_data_frame <- do.call(rbind,lapply(file_names,read.csv))
+
+ Expected Output
+
+Not Applicable
+
+
+Copyrights© 2017, AcadGild. All Rights Reserved
+2
+
+
+
+
+
+The Approximate time to complete this task is 20 Minutes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copyrights© 2017, AcadGild. All Rights Reserved
+3
+
+
+
